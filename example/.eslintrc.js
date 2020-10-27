@@ -1,10 +1,64 @@
 module.exports = {
+    env: {
+        browser: true,
+        es6: true,
+        jest: true,
+        node: true,
+    },
     extends: [
-        'plugin:vue/vue3-recommended',
+        "eslint:recommended",
+        "plugin:vue/recommended",
+        "@vue/typescript",
+        "prettier/vue",
+        "plugin:prettier/recommended",
+    ],
+    plugins: ["simple-import-sort", "jest"],
+    parserOptions: {
+        sourceType: "module",
+    },
+    overrides: [
+        {
+            files: ["**/*.ts", "**/*.tsx"],
+            extends: [
+                "eslint:recommended",
+                "plugin:@typescript-eslint/eslint-recommended",
+                "plugin:@typescript-eslint/recommended",
+            ],
+            plugins: ["@typescript-eslint", "simple-import-sort"],
+            parser: "vue-eslint-parser",
+            parserOptions: {
+                parser: "@typescript-eslint/parser",
+                sourceType: "module",
+            },
+        },
     ],
     rules: {
-        // override/add rules settings here, such as:
-        // 'vue/no-unused-vars': 'error'
-        "curly": "error"
-    }
-}
+        "curly": "error",
+        "simple-import-sort/sort": "error",
+        "no-irregular-whitespace": "off",
+        "space-before-function-paren": "off",
+        "semi-spacing": "warn",
+        "object-curly-spacing": ["warn", "always"],
+        "no-trailing-spaces": "warn",
+        "no-multi-spaces": "warn",
+        "array-bracket-spacing": "warn",
+        "block-spacing": ["off", "never"],
+        "comma-spacing": "warn",
+        "func-call-spacing": "warn",
+        "key-spacing": "warn",
+        "keyword-spacing": "warn",
+        "no-useless-escape": "off",
+        "no-unused-vars": "off",
+        "vue/html-end-tags": "error",
+        "vue/require-default-prop": "error",
+        "vue/require-prop-types": "error",
+        "prefer-const": "error",
+        "no-extra-semi": "error",
+        "no-var": "error",
+        "max-lines-per-function": "off",
+        "no-console": "warn",
+        "no-debugger": "warn",
+        "no-alert": "warn",
+        "jest/no-disabled-tests": "warn",
+    },
+};
